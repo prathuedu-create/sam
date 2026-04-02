@@ -1,0 +1,6 @@
+mvn compile
+mvn test
+mvn clean install
+
+git config --global user.name "prathuedu-create" or "Prathusha Sridhar"
+git config --global user.name "prathuedu@gmail.com"
