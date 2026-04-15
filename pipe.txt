@@ -70,7 +70,7 @@ stages {
     }
     stage('Deploy to Kubernetes') {
         steps {
-            withCredentials([file(credentialsId: 'kuberconfig', variable: 'KUBECONFIG')]) {
+            withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                 bat '''
                 set KUBECONFIG=%KUBECONFIG%
                 kubectl apply -f deployment.yaml --validate=false
@@ -80,3 +80,33 @@ stages {
     }
 }
 }
+
+ kubectl config view --raw > kubeconfig.yaml: Run this in terminal
+then choose secret file; id:
+Scope:
+
+Global (Jenkins, nodes, items, all child items, etc)
+
+Replace
+Filename:
+kubeconfig.yaml
+
+ID:
+kubeconfig
+Description:
+kube
+This is for kubernetes.
+Docker:
+Scope:
+Global (Jenkins, nodes, items, all child items, etc)
+Username:
+prathusha08
+
+Treat username as secret? unchecked
+Password: Prathu@08
+
+ID:
+dockerhub
+Description:
+Docker login
+
