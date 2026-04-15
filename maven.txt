@@ -1,0 +1,54 @@
+Path:
+Manage Jenkins → Tools → Maven Installations
+Configuration:
+Name: M3
+MAVEN_HOME: C:\Program Files\Apache\apache-maven-3.9.12
+Install Automatically: UNCHECKED
+
+pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.example</groupId>
+ <artifactId>simple-maven-app</artifactId>
+ <version>1.0-SNAPSHOT</version>
+ 
+ <dependencies>
+   <dependency>
+       <groupId>junit</groupId>
+       <artifactId>junit</artifactId>
+       <version>4.13.2</version>
+       <scope>test</scope>
+   </dependency>
+ </dependencies>
+</project>
+
+app.java and appTest.java
+(in vs)
+mvn compile
+mvn test
+mvn clean install
+
+Pipeline for maven:
+
+pipeline {
+agent any
+tools {
+maven 'M3'
+}
+stages {
+stage('Checkout Git') {
+steps {
+git branch: 'main',
+url: 'https://github.com/prathuedu-create/SIMPLE-MAVEN-APPLICATION.git'
+}
+}
+stage('Build and Test') {
+steps {
+bat 'mvn clean test'
+}
+}
+}
+}
