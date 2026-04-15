@@ -110,3 +110,9 @@ dockerhub
 Description:
 Docker login
 
+Pull from git to vs:
+git init
+git clone (repos link)
+cd repos name
+git add .
+
